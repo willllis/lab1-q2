@@ -1,0 +1,26 @@
+import tkinter as tk
+from shape.taichi import Taichi
+import math
+import random
+
+def main():
+ 
+    root = tk.Tk()
+        
+    canvas = tk.Canvas(root,height=600,width=600)
+    
+    x=300
+    y=300
+    radius=250
+    petals=16
+
+    for i in range(petals):                                      
+        t=Taichi(x+math.cos((2*math.pi/petals)*i)*radius,y+math.sin((2*math.pi/petals)*i)*radius,radius/6,
+                 "#%02x%02x%02x"%(int(random.random()*256),int(random.random()*256),int(random.random()*256)),
+                 "#%02x%02x%02x"%(int(random.random()*256),int(random.random()*256),int(random.random()*256)),canvas)
+        t.draw()
+    
+    root.mainloop()  
+
+if __name__ == '__main__':
+    main()  
